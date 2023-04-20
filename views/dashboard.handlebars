@@ -1,12 +1,3 @@
-<section>
-    <div>
-        <h2>Sign Up:</h2>
-        <form>
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username">
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password">
-        </form>
-        <button>Sign Up</button>
-    </div>
-</section>
+{{#each posts as |post|}}
+{{> blogPost}}
+{{/each}}

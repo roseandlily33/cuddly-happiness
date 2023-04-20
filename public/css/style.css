@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Elsie&family=Source+Sans+Pro:wght@300&display=swap');
+
+:root{
+    --heading: 'Elsie', cursive;
+    --main: 'Source Sans Pro', sans-serif;
+    --white:#E3F2FD;
+    --lightBlue: #BBDEFB;
+    --medBlue: #1976D2;
+    --darkBlue: #0D47A1;
+}

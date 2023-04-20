@@ -2,6 +2,14 @@ const router = require('express').Router();
 const { User, Post } = require('../models');
 
 //Get all the posts:
+router.get('/', (req, res) => {
+    try{
+        res.render('homepage')
+    } catch(err){
+        res.status(500).json({message: 'No homepage available'})
+    }
+})
+
 router.get('/', async (req, res) => {
     try{
         const blogPosts = await Post.findAll();

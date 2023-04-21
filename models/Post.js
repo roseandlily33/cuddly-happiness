@@ -22,7 +22,7 @@ Post.init(
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                leng: [2, 250],
+                len: [2, 250],
             }
         },
         post_date:{
@@ -39,13 +39,12 @@ Post.init(
         }
     },
     {
-        
         sequelize,
         timestamps: false,
         freezeTableName:true,
         underscoared: true,
-        modelName: 'user',
-        }
+        modelName: 'post',
+    }
 );
 
 module.exports = Post;

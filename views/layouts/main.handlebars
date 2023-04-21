@@ -13,15 +13,18 @@
             <li><a href="#">Home</a></li>
             <li><a href="#">Dashboard</a></li>
             {{#if logged_in}}
-            <li><a href="#"><button>Log Out</button></a></li>
+            <li><a href="#"><button id="logout">Log Out</button></a></li>
             {{else}}
-            <li><a href="#"><button>Log In</button></a></li>
+            <li><a href="#"><button id="login">Log In</button></a></li>
             {{/if}}
         </nav>
     </header>
     <main>
         {{{body}}}
     </main>
+    <script src="../../public/js/logout.js"></script>
+    <script src="../../public/js/login.js"></script>
+    <script src="../../public/js/signup.js"></script>
     
 </body>
 </html>

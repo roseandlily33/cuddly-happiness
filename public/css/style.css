@@ -8,6 +8,11 @@
    --white: #f0e0e0;
    --lightPink: #e17b98;
 }
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
 body{
     background-color: var(--white);
     font-family: var(--main);
@@ -19,10 +24,13 @@ header{
     flex-direction: row;
     justify-content: space-between;
     padding: 1em;
+    border-bottom: 1px solid var(--lightPink);
 }
 #title{
     font-family: var(--heading);
     color: var(--hotPink);
+    font-size: 2.3em;
+    padding-block: 0.3em;
 }
 nav{
     display: flex;
@@ -35,6 +43,11 @@ a{
     text-decoration: none;
     color: var(--lightPink);
     font-weight: bold;
+    font-size: 1.2em;
+}
+a:hover{
+    color: var(--brown);
+    text-decoration: underline;
 }
 button{
     background-color: var(--hotPink);
@@ -42,4 +55,86 @@ button{
     padding: 1em 2em;
     border-radius: 25px;
     border: none;
+    margin: 0.5em;
+}
+/* Homepage */
+#homepage{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#homepage h1{
+    font-family: var(--heading);
+    color: var(--lightPink);
+    margin-top: 2em;
+    font-size: 2em;
+}
+#homepage p{
+    color: var(--brown);
+    font-size: 1.2em;
+    margin-top: 1em;
+}
+/* Login Div */
+.logInSignUpDiv{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-block: 5em;
+}
+.logInSignUpDiv h2{
+    font-family: var(--heading);
+    color: var(--hotPink);
+    font-size: 1.8em;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    margin: 0.6em;
+}
+form label{
+    margin-block: 0.5em;
+    font-size: 1em;
+}
+form input{
+    border: none;
+    border-radius: 25px;
+    padding: 1em;
+}
+.logInSignUpDiv h3{
+    margin-block: 0.5em;
+}
+/* Single Block Of The Post */
+#card{
+    margin: 2em;
+}
+
+#topCard{
+    background-color: var(--hotPink);
+    color: black;
+    border-bottom: 2px wavy var(var(--hotPink));
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px; 
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1.2em;
+    height: 6.3em;
+
+}
+
+.box {
+    --mask:
+      radial-gradient(52.84px at 50% calc(100% - 73.50px),#000 99%,#0000 101%) calc(50% - 60px) 0/120px 100%,
+      radial-gradient(52.84px at 50% calc(100% + 43.50px),#0000 99%,#000 101%) 50% calc(100% - 30px)/120px 100% repeat-x;
+    -webkit-mask: var(--mask);
+            mask: var(--mask);
+  }
+#bottomCard{
+    background-color: var(--brown);
+    color: var(--white);
+    padding: 1.7em;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
 }

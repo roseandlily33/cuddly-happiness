@@ -11,13 +11,36 @@ Comment.init(
             autoIncrement: true,
             primaryKey: true,
         },
-        content: {
+        comment_content: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        date: {
+        comment_date: {
             type: DataTypes.DATE,
             allowNull: false,
+        },
+        user_id:{
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            references: {
+                model: 'user',
+                key: 'id'
+            }
+        },
+        post_id:{
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            references:{
+                model: 'post',
+                key: 'id',
+            }
         }
+    },
+    {
+        sequelize,
+        freezeTableName: true,
+        modelName: 'comment',
+        underscored: true,
     }
-)
+);
+module.exports = Comment;

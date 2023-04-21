@@ -3,8 +3,43 @@
 :root{
     --heading: 'Elsie', cursive;
     --main: 'Source Sans Pro', sans-serif;
-    --white:#E3F2FD;
-    --lightBlue: #BBDEFB;
-    --medBlue: #1976D2;
-    --darkBlue: #0D47A1;
+   --hotPink : #DE3163;
+   --brown: #6E260E;
+   --white: #f0e0e0;
+   --lightPink: #e17b98;
+}
+body{
+    background-color: var(--white);
+    font-family: var(--main);
+    
+}
+/* Header */
+header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1em;
+}
+#title{
+    font-family: var(--heading);
+    color: var(--hotPink);
+}
+nav{
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    align-items: center;
+}
+a{
+    padding: 1em;
+    text-decoration: none;
+    color: var(--lightPink);
+    font-weight: bold;
+}
+button{
+    background-color: var(--hotPink);
+    color: var(--white);
+    padding: 1em 2em;
+    border-radius: 25px;
+    border: none;
 }

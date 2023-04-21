@@ -11,16 +11,32 @@ Post.init(
             autoIncrement: true,
             primaryKey: true,
         },
-        title:{
+        post_title:{
             type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                len: [3],
+            }
+        },
+        post_content: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                leng: [2, 250],
+            }
+        },
+        post_date:{
+            type: DataTypes.DATE,
             allowNull: false,
         },
-        content: {
-            type: DataTypes.STRING,
+        user_id: {
+            type: DataTypes.INTEGER,
             allowNull: false,
+            references: {
+                model: 'user',
+                key: 'id',
+            }
         }
-
-
     },
     {
         

@@ -1,6 +1,8 @@
 <section>
     <div id="homepage">
-        <h1>Welcome to the Shortcake Blog</h1>
-        <p>A blog about cake!</p>
+      {{#each postMap as |post|}}
+      {{> singlepost}}
+      {{/each}}
+     <h1>On the homepage</h1>
     </div>
 </section>

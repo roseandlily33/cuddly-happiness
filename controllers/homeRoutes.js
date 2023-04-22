@@ -1,23 +1,33 @@
 const router = require('express').Router();
 const { User, Post } = require('../models');
 
-
-router.get('/example', async (req, res) => {
+//Get all the posts for homepage:
+router.get('/', async(req, res) => {
     try{
-        res.render('singlepost')
-    }catch(err){
-        res.status(500).json({message: 'nope'});
-    }
-});
-
-//Get all the posts:
-router.get('/', (req, res) => {
-    try{
-        res.render('homepage')
+        const postData = await Post.findAll();
+        const postMap = postData.map(post => post.get({plain:true}));
+        res.render('homepage',
+        postMap);
     } catch(err){
         res.status(500).json({message: 'No homepage available'})
     }
-})
+});
+
+
+//Get one post:
+router.get('/:id', async (req, res) => {
+    try{
+        const blogPost = await Post.findByPK(req.params.id);
+        console.log(blogPost);
+        res.render('onepost',
+        blogPost);
+
+    } catch (err){
+        res.status(500).json({message: 'No Blog Post Found'});
+
+    }
+});
+
 //Get's login page:
 router.get('/login', async (req, res) => {
     try{
@@ -58,17 +68,7 @@ router.get('/signup', async (req, res) => {
     }
 })
 
-//Get one post:
-router.get('/:id', async (req, res) => {
-    try{
-        const blogPost = await Post.findByPK(req.params.id);
-        console.log(blogPost);
 
-    } catch (err){
-        res.status(500).json({message: 'No Blog Post Found'});
-
-    }
-});
 
 
 

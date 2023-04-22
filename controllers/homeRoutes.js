@@ -7,7 +7,7 @@ router.get('/', async(req, res) => {
         const postData = await Post.findAll();
         const postMap = postData.map(post => post.get({plain:true}));
         res.render('homepage',
-        postMap);
+        {postMap});
     } catch(err){
         res.status(500).json({message: 'No homepage available'})
     }
@@ -63,7 +63,6 @@ router.post('/login', async (req, res) => {
 router.get('/signup', async (req, res) => {
     try{
         res.render('signup');
-
     } catch(err){
         res.status(500).json({message: 'Cant sign up'});
     }

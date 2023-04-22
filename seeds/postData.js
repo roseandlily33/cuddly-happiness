@@ -1,4 +1,4 @@
-const {Post} = require('../models/Post');
+const Post = require('../models/Post');
 const postData =[
     {
         "post_title": "Chocolate Cake",
@@ -28,7 +28,7 @@ const postData =[
         "post_title": "Red Velvet Cake",
         "post_content": "Topped with cream cheese icing, this red velvet cake is made for royals",
         "post_date": "December 21, 2022",
-        "user_id" : 4
+        "user_id" : 2
     }
 ];
 

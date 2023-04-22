@@ -109,21 +109,30 @@ form input{
 #card{
     margin: 2em;
 }
-
+#card h1{
+    padding-left: 1em;
+    padding-bottom: 3.5em;
+    font-size: 1em;
+    color: var(--white);
+    }
+#card h2{
+    padding-right: 4em;
+    padding-bottom: 16.5em;
+    font-size: 0.2em;
+    color: var(--white);
+   
+}
 #topCard{
     background-color: var(--hotPink);
-    color: black;
     border-bottom: 2px wavy var(var(--hotPink));
     border-top-left-radius: 15px;
     border-top-right-radius: 15px; 
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 1.2em;
     height: 6.3em;
-
+    width: 600px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
-
 .box {
     --mask:
       radial-gradient(52.84px at 50% calc(100% - 73.50px),#000 99%,#0000 101%) calc(50% - 60px) 0/120px 100%,
@@ -134,7 +143,14 @@ form input{
 #bottomCard{
     background-color: var(--brown);
     color: var(--white);
-    padding: 1.7em;
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
+    height: 100px;
+}
+#bottomCard p{
+    color: var(--white);
+    font-size: 1em;
+    text-align: center;
+    padding: 1em;
+   
 }

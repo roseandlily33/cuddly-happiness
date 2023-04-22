@@ -58,6 +58,7 @@ router.post('/login', async (req, res) => {
         res.status(500).json({message: 'Couldnt login'});
     }
 })
+
 //Sign up:
 router.get('/signup', async (req, res) => {
     try{

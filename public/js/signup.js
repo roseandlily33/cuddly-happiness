@@ -1,7 +1,7 @@
 const signup = async(e) => {
     e.preventDefault();
-    const username = document.querySelector('#username').value.trim();
-    const password = document.querySelector('#password').value.trim();
+    const username = document.querySelector('#username-signup').value.trim();
+    const password = document.querySelector('#password-signup').value.trim();
     if(username && password){
         const response = await fetch('/api/users', {
             method: 'POST',
@@ -18,4 +18,4 @@ const signup = async(e) => {
     }
 };
 
-document.querySelector('')
+document.querySelector('.signupForm').addEventListener('submit', signup);

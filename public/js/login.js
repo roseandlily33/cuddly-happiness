@@ -1,8 +1,7 @@
 const login = async(e) => {
-    //document.location.replace('/login');
     e.preventDefault();
-    const username = document.querySelector('#username').value.trim();
-    const password = document.querySelector('#password').value.trim();
+    const username = document.querySelector('#username-login').value.trim();
+    const password = document.querySelector('#password-login').value.trim();
     if(username && password){
     const response = await fetch('/api/users/login', {
         method:'POST',
@@ -10,7 +9,7 @@ const login = async(e) => {
         headers: {'Content-Type' : 'application/json'}
     });
     if(response.ok){
-        document.location.replace('/')
+        document.location.replace('dashboard')
     } else {
         alert('Not able to login');
         return;
@@ -18,4 +17,4 @@ const login = async(e) => {
     return;
 }}
 
-document.querySelector('#subLogin').addEventListener('click', login);
+document.querySelector('.loginForm').addEventListener('click', login);

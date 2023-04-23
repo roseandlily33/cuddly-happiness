@@ -1,6 +1,32 @@
 const router = require('express').Router();
 const {User} = require('../../models');
 
+
+
+// Post on login page:
+router.post('/login', async (req, res) => {
+    try{
+        const userData = await User.findOne({ where: {
+            username: req.body.username
+        }});
+        if(!userData){
+            res.status(400).json({message: 'Not a valid username or password '});
+            return;
+        }
+        const validPass = userData.checkPassword(req.body.password);
+        if(!validPass){
+            res.status(500).json({message: 'Not a valid username or password' });
+            return;
+        }
+        req.session.save(() => {
+           req.session.loggedIn = true;
+           //res.status(200).render('dashboard');
+           res.status(200).json({message: 'Logged IN!!'})
+        });
+    } catch(err){
+        res.status(500).json({message: 'Couldnt login'});
+    }
+});
 //Creates a new user:
 router.post('/', async (req, res) => {
     try{
@@ -14,30 +40,6 @@ router.post('/', async (req, res) => {
         });
     } catch(err){
         res.status(500).json({message: 'Could not create a user'});
-    }
-});
-
-// Post on login page:
-router.post('/login', async (req, res) => {
-    try{
-        const userData = await User.findOne({ where: {
-            email: req.body.email
-        }});
-        if(!userData){
-            res.status(400).json({message: 'Not a valid username or password '});
-            return;
-        }
-        const validPass = userData.checkPassword(req.body.password);
-        if(!validPass){
-            res.status(500).json({message: 'Not a valid username or password' });
-            return;
-        }
-        req.session.save(() => {
-            req.session.loggedIn = true;
-            res.status(200).render('dashboard');
-        });
-    } catch(err){
-        res.status(500).json({message: 'Couldnt login'});
     }
 });
 

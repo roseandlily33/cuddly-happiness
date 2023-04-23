@@ -154,3 +154,35 @@ form input{
     padding: 1em;
 }
 /* Dashboard */
+#dashTitle{
+    text-align: center;
+    padding-top: 1em;
+    font-family: var(--heading);
+    color: var(--hotPink);
+    font-size: 2em;
+}
+#dashboard{
+    display: flex;
+    flex-direction: column;
+    margin-top: 1em;
+}
+.dashDiv{
+    border: 2px dashed var(--lightPink);
+    margin-inline: 2em;
+    margin-block: 1em;
+    padding: 1em;
+    border-radius: 15px;
+}
+.dashDiv a{
+    font-family: var(--heading);
+    color: var(--hotPink);
+    font-size: 1.5em;
+    text-decoration: underline;
+}
+.dashDiv h4{
+    color: var(--brown);
+    font-size: 1.1em;
+    padding-left: 1.4em;
+}
+#newPostBtn{
+    float:

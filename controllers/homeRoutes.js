@@ -10,9 +10,10 @@ router.get('/', async(req, res) => {
         });
         const postMap = postData.map(post => post.get({plain:true}));
         res.status(200).render('homepage',
-        {postMap});
+        {postMap,
+        loggedIn: req.session.loggedIn});
     } catch(err){
-        res.status(500).json({message: 'No homepage available'})
+        res.status(500).json({message: 'No homepage available'});
     }
 });
 //Get's login page: 
@@ -23,7 +24,7 @@ router.get('/login', async (req, res) => {
         }
         res.render('login');
     } catch(err){
-        res.status(500).json({message: 'Login page is not available'})
+        res.status(500).json({message: 'Login page is not available'});
     }
 });
 //Sign up: - Finished
@@ -36,7 +37,7 @@ router.get('/signup', async (req, res) => {
 });
 
 // Needs withAuth
-router.get('/dashboard', async (req, res) => {
+router.get('/dashboard/:id', async (req, res) => {
     try{
         const postData = await Post.findAll({
             where: {
@@ -55,19 +56,7 @@ router.get('/dashboard', async (req, res) => {
 })
 
 
-//Get one post:
-router.get('dashboard/:id', async (req, res) => {
-    try{
-        const blogPost = await Post.findByPK(req.params.id);
-        console.log(blogPost);
-        res.render('onepost',
-        blogPost);
 
-    } catch (err){
-        res.status(500).json({message: 'No Blog Post Found'});
-
-    }
-});
 
 
 

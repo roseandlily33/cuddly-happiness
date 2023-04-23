@@ -3,6 +3,7 @@ const { User, Post, Comment} = require('../models');
 const withAuth = require('../utils/withAuth');
 
 //Get all the posts for homepage: 
+// Still need to get the user who created the post
 router.get('/', async(req, res) => {
     try{
         const postData = await Post.findAll({
@@ -37,15 +38,12 @@ router.get('/signup', async (req, res) => {
 });
 
 // Needs withAuth
-router.get('/dashboard/:id', async (req, res) => {
+router.get('/dashboard', async (req, res) => {
     try{
         const postData = await Post.findAll({
-            where: {
-                id: req.params.id
-            }
+            include: ({model: User})
         });
         const post = postData.map(post => post.get({plain: true}));
-        console.log('POST'+ post);
         res.render('dashboard', {
             post
         });
@@ -53,7 +51,30 @@ router.get('/dashboard/:id', async (req, res) => {
     } catch(err){
         res.status(500).json({message: 'Dashboard is not found'});
     }
-})
+});
+
+router.get('/post/:id', withAuth, async(req, res) => {
+    if(!req.session.loggedIn){
+        res.redirect('/login'); 
+    } else {
+        try{
+            const postData = await Post.findByPk(req.params.id, {
+                include: [{model:User}]
+            });
+            if(!postData){
+                res.status(404).json('Cannot find the post');
+            };
+            const post = postData.get({plain: true});
+            res.status(200).render('onepost', {
+                post,
+                loggedIn: req.session.loggedIn
+            });
+        } catch(err){
+            res.status(500).json({message: 'Cannot get a post with the id'});
+        }
+    }
+});
+
 
 
 

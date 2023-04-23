@@ -1,5 +1,5 @@
-const login = async(e) => {
-    e.preventDefault();
+const login = async(event) => {
+    event.preventDefault();
     const username = document.querySelector('#username-login').value.trim();
     const password = document.querySelector('#password-login').value.trim();
     if(username && password){
@@ -17,4 +17,4 @@ const login = async(e) => {
     return;
 }}
 
-document.querySelector('.loginForm').addEventListener('click', login);
+document.querySelector('.loginForm').addEventListener('submit', login);

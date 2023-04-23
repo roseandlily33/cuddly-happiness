@@ -12,7 +12,6 @@ router.post('/', async (req, res) => {
             res.session.loggedIn = true;
             res.status(200).json(dbUser);
         });
-
     } catch(err){
         res.status(500).json({message: 'Could not create a user'});
     }
@@ -26,16 +25,17 @@ router.post('/login', async (req, res) => {
         }});
         if(!userData){
             res.status(400).json({message: 'Not a valid username or password '});
+            return;
         }
         const validPass = userData.checkPassword(req.body.password);
         if(!validPass){
             res.status(500).json({message: 'Not a valid username or password' });
+            return;
         }
         req.session.save(() => {
             req.session.loggedIn = true;
-            res.status(200).json({message: 'You are now logged in'});
-        })
-
+            res.status(200).render('dashboard');
+        });
     } catch(err){
         res.status(500).json({message: 'Couldnt login'});
     }

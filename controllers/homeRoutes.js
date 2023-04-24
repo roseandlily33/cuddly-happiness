@@ -52,21 +52,43 @@ router.get('/dashboard', async (req, res) => {
         res.status(500).json({message: 'Dashboard is not found'});
     }
 });
+//See the comments route
+router.get('/onepost/:id', async(req, res) => {
+    try{
+        const postData = await Post.findByPk(req.params.id, {
+                include: [{model:User}, {model: Comment}]
+            });
+            if(!postData){
+                res.status(404).json('Cannot find the post');
+            };
+            const comments = postData.get({plain: true});
+            res.status(200).render('onepost', 
+                comments,
+                {loggedIn: req.session.loggedIn}
+            );
 
-router.get('/post/:id', withAuth, async(req, res) => {
+
+    } catch(err){
+        res.status(500).json({message: 'No comments found'});
+    }
+});
+
+
+//Edit the post route 
+router.get('/edit/:id', withAuth, async(req, res) => {
     if(!req.session.loggedIn){
         res.redirect('/login'); 
     } else {
         try{
             const postData = await Post.findByPk(req.params.id, {
-                include: [{model:User}]
+                include: [{model:User}, {model: Comment}]
             });
             if(!postData){
                 res.status(404).json('Cannot find the post');
             };
-            const post = postData.get({plain: true});
+            const comments = postData.get({plain: true});
             res.status(200).render('onepost', 
-                post,
+                comments,
                 {loggedIn: req.session.loggedIn}
             );
         } catch(err){

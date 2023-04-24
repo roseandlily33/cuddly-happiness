@@ -56,14 +56,14 @@ router.get('/dashboard', async (req, res) => {
 router.get('/onepost/:id', async(req, res) => {
     try{
         const postData = await Post.findByPk(req.params.id, {
-                include: [{model:User}, {model: Comment}]
+                include: [User, { model: Comment, include: [User]}, {model: Comment, attributes: ['comment_content', 'comment_date']}],
             });
             if(!postData){
                 res.status(404).json('Cannot find the post');
             };
-            const comments = postData.get({plain: true});
+            const post = postData.get({plain: true});
             res.status(200).render('onepost', 
-               { comments,
+               { post,
                 loggedIn: req.session.loggedIn}
             );
     } catch(err){

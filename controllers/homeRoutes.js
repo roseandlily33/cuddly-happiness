@@ -9,9 +9,9 @@ router.get('/', async(req, res) => {
         const postData = await Post.findAll({
             include: [{model: User, attributes: ['username']}]
         });
-        const postMap = postData.map(post => post.get({plain:true}));
+        const posts = postData.map(post => post.get({plain:true}));
         res.status(200).render('homepage',
-        {postMap,
+        {posts,
         loggedIn: req.session.loggedIn});
     } catch(err){
         res.status(500).json({message: 'No homepage available'});
@@ -70,6 +70,23 @@ router.get('/onepost/:id', async(req, res) => {
         res.status(500).json({message: 'No comments found'});
     }
 });
+// Post to comments:
+router.post('/', async(req, res) => {
+    try{
+        const postData = await Comment.create({
+            post_id: req.body.post_id,
+            comment_content: req.body.comment_text,
+            comment_date: req.body.comment_date,
+            user_id: req.body.user,
+        });
+        req.session.save(() => {
+            req.session.loggedIn = true,
+            res.status(200).json(postData);
+        })
+    } catch(err){
+        res.status(500).json({message: 'No comments found'});
+    }
+});
 
 //Edit the post route 
 router.get('/edit/:id', withAuth, async(req, res) => {
@@ -98,8 +115,7 @@ router.put('/edit:id', async(req, res) => {
     } catch(err){
         res.status(500).json({message: 'Couldnt update blog'});
     }
-})
-
+});
 
 //Make a new blog:
 router.get('/newBlog', (req, res) => {
@@ -115,8 +131,10 @@ router.post('/newBlog', async(req, res) => {
         const newBlog = await Post.create({
             post_title: req.body.post_title,
             post_content: req.body.post_content,
+            post_date: req.body.date,
             user_id: req.body.user,
-        })
+        });
+        res.status(200).json(newBlog);
 
     } catch(err){
         res.status(500).json({message: 'Cannot make the new blog'})

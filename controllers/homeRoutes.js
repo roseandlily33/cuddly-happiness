@@ -65,10 +65,10 @@ router.get('/post/:id', withAuth, async(req, res) => {
                 res.status(404).json('Cannot find the post');
             };
             const post = postData.get({plain: true});
-            res.status(200).render('onepost', {
+            res.status(200).render('onepost', 
                 post,
-                loggedIn: req.session.loggedIn
-            });
+                {loggedIn: req.session.loggedIn}
+            );
         } catch(err){
             res.status(500).json({message: 'Cannot get a post with the id'});
         }

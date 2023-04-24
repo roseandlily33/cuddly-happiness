@@ -115,13 +115,15 @@ form input{
     font-size: 1.5em;
     color: var(--white);
     }
+
 #card h2{
-    padding-right: 4em;
-    padding-bottom: 16.5em;
-    font-size: 0.2em;
+    padding-right: 2em;
+    padding-bottom: 2.5em;
+    font-size: 1em;
     color: var(--white);
-   
 }
+
+
 #topCard{
     background-color: var(--hotPink);
     border-bottom: 2px wavy var(var(--hotPink));
@@ -172,6 +174,9 @@ form input{
     margin-block: 1em;
     padding: 1em;
     border-radius: 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 .dashDiv a{
     font-family: var(--heading);
@@ -185,4 +190,6 @@ form input{
     padding-left: 1.4em;
 }
 #newPostBtn{
-    float:
+    float: right;
+    margin-right: 3em;
+}

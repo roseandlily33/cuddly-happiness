@@ -63,16 +63,13 @@ router.get('/onepost/:id', async(req, res) => {
             };
             const comments = postData.get({plain: true});
             res.status(200).render('onepost', 
-                comments,
-                {loggedIn: req.session.loggedIn}
+               { comments,
+                loggedIn: req.session.loggedIn}
             );
-
-
     } catch(err){
         res.status(500).json({message: 'No comments found'});
     }
 });
-
 
 //Edit the post route 
 router.get('/edit/:id', withAuth, async(req, res) => {

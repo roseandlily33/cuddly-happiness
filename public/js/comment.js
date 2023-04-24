@@ -1,4 +1,4 @@
-const newComment = (event) => {
+//const newComment = (event) => {
     event.preventDefault();
     const commentContent = document.querySelector('#newComment');
     if(commentContent){
@@ -9,5 +9,5 @@ const newComment = (event) => {
     }
 
 
-}
+//}
 document.querySelector('.commentForm').addEventListener('submit', newComment);

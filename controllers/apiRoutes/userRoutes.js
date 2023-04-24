@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const {User} = require('../../models');
+const {User, Post, Comment} = require('../../models');
 
 //Creates a new user: - Finished
 router.post('/', async (req, res) => {
@@ -64,14 +64,7 @@ router.delete('/api/dashboard/:id', async(req, res) => {
         res.status(500).json({message: 'Cannot delete this post'});
     }
 });
-router.post('/api/comments', async(req, res) => {
-    try{
-        const postData = await Comment.create({
-            post_id: req.body.post_id,
-            comment_text: req.body.comment_text,
-        });res.status(200).json(postData);
-    } catch(err){
-        res.status(500).json({message: 'No comments made'});
-    }
-});
+
+
+
 module.exports = router;

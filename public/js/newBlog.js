@@ -2,8 +2,10 @@ const newBlog = async(event) => {
     event.preventDefault();
     const post_title = document.querySelector('#blogTitle').value.trim();
     const post_content = document.querySelector('#blogContent').value.trim();
+
+    //Fetch route for the blog:
     if(post_title && post_content){
-        const response = await fetch('/newBlog', {
+        const response = await fetch('/', {
             method: 'POST',
             body: JSON.stringify({post_title, post_content}),
             headers: {

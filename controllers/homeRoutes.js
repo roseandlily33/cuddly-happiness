@@ -77,24 +77,30 @@ router.get('/edit/:id', withAuth, async(req, res) => {
         res.redirect('/login'); 
     } else {
         try{
-            const postData = await Post.findByPk(req.params.id, {
-                include: [{model:User}, {model: Comment}]
-            });
+            const postData = await Post.findByPk(req.params.id);
             if(!postData){
                 res.status(404).json('Cannot find the post');
             };
-            const comments = postData.get({plain: true});
-            res.status(200).render('onepost', 
-                comments,
-                {loggedIn: req.session.loggedIn}
+            const post = postData.get({plain: true});
+            res.status(200).render('editpage', {
+                post,
+                loggedIn: req.session.loggedIn}
             );
         } catch(err){
             res.status(500).json({message: 'Cannot get a post with the id'});
         }
     }
 });
+//Make a new blog:
+router.get('/newBlog', (req, res) => {
+    try{
+        res.render('newBlog');
 
+    } catch(err){
+        res.status(500).json({message: 'Cannot create a new blog'})
+    }
 
+})
 
 
 

@@ -66,9 +66,13 @@ button{
 }
 #homepage h1{
     font-family: var(--heading);
-    color: var(--lightPink);
-    margin-top: 2em;
-    font-size: 2em;
+    margin-top: 1.9em;
+    font-size: 1em;
+}
+#homepage a{
+    color: var(--white);
+    opacity: 100%;
+
 }
 #homepage p{
     color: var(--brown);
@@ -169,7 +173,7 @@ form input{
     margin-top: 1em;
 }
 .dashDiv{
-    border: 2px dashed var(--lightPink);
+    border: 3px dotted var(--hotPink);
     margin-inline: 2em;
     margin-block: 1em;
     padding: 1em;
@@ -192,4 +196,37 @@ form input{
 #newPostBtn{
     float: right;
     margin-right: 3em;
+}
+/* Comments header */
+#commentHeader{
+    border: 3px dotted var(--hotPink);
+    margin: 1em;
+    border-radius: 15px;
+    padding: 1em;
+}
+#commentHeader h1{
+    font-family: var(--heading);
+    color: var(--brown);
+}
+#commentHeader p{
+    color: var(--lightPink);
+}
+#commentDiv{
+    border: 1px solid black;
+}
+.commentForm{
+    background-color: var(--lightPink);
+    margin: 4em;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.commentForm label{
+    font-family: var(--heading);
+    color: var(--white);
+    font-size: 1.2em;
+}
+.commentForm input{
+    width: 80%;
 }

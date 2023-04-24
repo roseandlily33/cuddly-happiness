@@ -1,6 +1,6 @@
 const newComment = (event) => {
     event.preventDefault();
-    const comment_content = document.querySelector('#newComment');
+    const comment_content = document.querySelector('#newComment').value.trim();
     const post_id = window.location.toString().split('/')[ window.location.toString().split("/").length - 1];
     console.log(post_id);
     if(comment_content){

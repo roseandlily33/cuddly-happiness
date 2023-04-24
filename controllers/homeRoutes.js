@@ -91,17 +91,37 @@ router.get('/edit/:id', withAuth, async(req, res) => {
         }
     }
 });
+//Put route for updated blog:
+router.put('/edit:id', async(req, res) => {
+    try{
+
+    } catch(err){
+        res.status(500).json({message: 'Couldnt update blog'});
+    }
+})
+
+
 //Make a new blog:
 router.get('/newBlog', (req, res) => {
     try{
         res.render('newBlog');
-
     } catch(err){
         res.status(500).json({message: 'Cannot create a new blog'})
     }
+});
+// Post the new blog:
+router.post('/newBlog', async(req, res) => {
+    try{
+        const newBlog = await Post.create({
+            post_title: req.body.post_title,
+            post_content: req.body.post_content,
+            user_id: req.body.user,
+        })
 
-})
-
+    } catch(err){
+        res.status(500).json({message: 'Cannot make the new blog'})
+    }
+});
 
 
 

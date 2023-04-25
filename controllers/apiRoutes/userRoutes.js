@@ -41,7 +41,7 @@ router.post('/login', async (req, res) => {
     }
 });
 
-// Logout - Finished
+// Logout
 router.post('/logout', (req, res) => {
     if(req.session.loggedIn){
         req.session.destroy(() => {
@@ -52,7 +52,7 @@ router.post('/logout', (req, res) => {
     }
 });
 //Delete a blog post:
-router.delete('/api/dashboard/:id', async(req, res) => {
+router.delete('dashboard/:id', async(req, res) => {
     try{
         const delPost = await Post.destroy({
             where: {
@@ -64,6 +64,7 @@ router.delete('/api/dashboard/:id', async(req, res) => {
         res.status(500).json({message: 'Cannot delete this post'});
     }
 });
+
 
 
 

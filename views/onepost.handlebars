@@ -4,7 +4,7 @@
         <p>{{post.post_content}}</p>
     </div>
     <div id="commentDiv">
-        {{#each comments as |comment|}}
+        {{#each post as |comment|}}
         {{> commentDiv}}
         {{/each}}
     </div>

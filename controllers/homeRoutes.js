@@ -45,13 +45,36 @@ router.get('/dashboard', async (req, res) => {
         });
         const post = postData.map(post => post.get({plain: true}));
         res.render('dashboard', {
-            post
+            post,
+            loggedIn: req.session.loggedIn,
         });
 
     } catch(err){
         res.status(500).json({message: 'Dashboard is not found'});
     }
 });
+
+
+
+router.get('/onepost/:id', async(req, res) => {
+    try{
+        const postData = await Post.findByPk(req.params.id, {
+            include: [{model: User}, {model: Comment}]
+               // include: [User, { model: Comment, include: [User]}],
+            });
+            if(!postData){
+                res.status(404).json('Cannot find the post');
+            };
+            const post = postData.get({plain: true});
+            res.status(200).render('onepost', 
+               { post,
+                loggedIn: req.session.loggedIn}
+            );
+    } catch(err){
+        res.status(500).json({message: 'No comments found'});
+    }
+});
+
 
 
 

@@ -66,6 +66,7 @@ router.get('/onepost/:id', async(req, res) => {
                 res.status(404).json('Cannot find the post');
             };
             const post = postData.get({plain: true});
+            console.log(post);
             res.status(200).render('onepost', 
                { post,
                 loggedIn: req.session.loggedIn}

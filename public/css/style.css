@@ -212,8 +212,23 @@ form input{
     color: var(--lightPink);
 }
 #commentDiv{
-    border: 1px solid black;
+    margin: 2em;
 }
+#commentDiv h2{
+    text-align: center;
+    font-family: var(--heading);
+    color: var(--brown);
+}
+.commentEach{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border: 1px solid var(--lightPink);
+    padding: 0.5em;
+    margin: 1em;
+    border-radius: 25px;
+}
+
 .commentForm{
     background-color: var(--lightPink);
     margin: 4em;

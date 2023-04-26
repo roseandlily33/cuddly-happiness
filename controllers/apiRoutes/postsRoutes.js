@@ -1,8 +1,9 @@
 const router = require('express').Router();
 const {User, Post, Comment} = require('../../models');
+const withAuth = require('../../utils/withAuth');
 
 //Creates a new blog:
-router.post('/', async (req,res) => {
+router.post('/', withAuth, async (req,res) => {
     try{
         const newPost = await Post.create({
             post_title: req.body.post_title,
@@ -15,25 +16,30 @@ router.post('/', async (req,res) => {
     }
 });
 //Put to update the blog
-router.put('/:id', async(req, res) => {
+router.put('/:id',withAuth, async(req, res) => {
     try{
         const updatedBlog = await Post.update({
             post_title: req.body.post_title,
-            post_content: req.body.post_content,
+            post_content: req.body.post_content
+          
+        },{where: {
             user_id: req.session.user_id,
-        });
-        res.json(updatedBlog);
+                     id: req.params.id
+    }});
 
+        res.json(updatedBlog);
     } catch(err){
+        console.log(err);
         res.status(500).json({message: 'Couldnt update the blog!'})
     }
 });
 
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', withAuth, async (req, res) => {
    try{
     const deletedBlog = Post.destroy({
         where: {
-            id: req.params.id
+            id: req.params.id,
+            user_id: req.session.user_id
         }
     });
     res.json(deletedBlog);
@@ -41,7 +47,7 @@ router.delete('/:id', async (req, res) => {
     res.status(500).json({message: 'Not able to delete a blog'})
    }
 
-})
+});
 
 
 module.exports = router;

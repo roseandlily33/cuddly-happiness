@@ -77,7 +77,7 @@ router.get('/onepost/:id', async(req, res) => {
     }
 });
 
-router.get('/newBlog', async(req, res) => {
+router.get('/newBlog', withAuth, async(req, res) => {
     try{
         res.render('newBlog');
 

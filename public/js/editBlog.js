@@ -2,10 +2,8 @@ const editBlog = async(event) => {
     event.preventDefault();
     const id = window.location.toString().split('/')[ window.location.toString().split("/").length - 1];
 
-    const post_title = document.querySelector('#post_title');
-    const post_content = document.querySelector('#post_content');
-    console.log(post_title);
-    console.log(post_content);
+    const post_title = document.querySelector('#post_title').value.trim();
+    const post_content = document.querySelector('#post_content').value.trim();
 
     const response = await fetch(`/api/posts/${id}`, {
         method: 'PUT',
@@ -21,4 +19,4 @@ const editBlog = async(event) => {
     }
 }
 
-document.querySelector('.submitUpdate').addEventListener('submit', editBlog);
+document.querySelector('.submitUpdate').addEventListener('click', editBlog);

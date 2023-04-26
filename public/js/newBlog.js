@@ -1,10 +1,11 @@
 const newBlog = async(event) => {
     event.preventDefault();
+
     const post_title = document.querySelector('#blogTitle').value.trim();
     const post_content = document.querySelector('#blogContent').value.trim();
 
     if(post_title && post_content){
-        const response = await fetch('/api/posts', {
+        const response = await fetch('/api/posts/', {
             method: 'POST',
             body: JSON.stringify({post_title, post_content}),
             headers: {
@@ -22,4 +23,4 @@ const newBlog = async(event) => {
         alert('Need a title and content for your blog');
     }
 }
-document.querySelector('#newBlogBtn').addEventListener('submit', newBlog);
+document.querySelector('#blogForm').addEventListener('submit', newBlog);

@@ -4,11 +4,8 @@ const deletePost = async(event) => {
   
     const response = await fetch(`/api/posts/${id}`, {
         method: 'DELETE',
-       // body: JSON.stringify({post_id}),
-      //  headers: {
-        //    'Content-type': 'application/json'
-       // }
     });
+    
     if(response.ok){
         document.location.replace('/dashboard');
     } else {

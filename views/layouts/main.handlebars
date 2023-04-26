@@ -12,7 +12,9 @@
         <h1 id="title">Shortcake Blog</h1>
         <nav>
             <li><a href="/">Home</a></li>
+            {{#if loggedIn}}
             <li><a href="/dashboard">Dashboard</a></li>
+            {{/if}}
             {{#if loggedIn}}
             <li><button id="logout">Log Out</button></li>
             {{else}}

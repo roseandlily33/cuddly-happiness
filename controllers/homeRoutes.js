@@ -40,11 +40,14 @@ router.get('/signup', async (req, res) => {
 // Needs withAuth
 router.get('/dashboard', async (req, res) => {
     try{
-        const postData = await Post.findOne({
-            where: {
-                user_id: req.session.user_id
-            }, include: [{model: User}]
-        });
+        const postData = await Post.findAll({
+            include: [{model: User}]
+        })
+        //const postData = await Post.findOne({
+          //  where: {
+           //     user_id: req.session.user_id
+           // }, include: [{model: User}]
+        //});
         const post = postData.map(post => post.get({plain: true}));
         res.render('dashboard', {
             post,

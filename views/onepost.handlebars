@@ -8,6 +8,7 @@
         {{#each post.comments as |comment|}}
         <div class="commentEach">
         <h3>{{comment.comment_content}}</h3>
+        <h4>{{format_date comment.createdAt}}</h4>
         </div>
         {{/each}}
     </div>

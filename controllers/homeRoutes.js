@@ -77,7 +77,14 @@ router.get('/onepost/:id', async(req, res) => {
     }
 });
 
+router.get('/newBlog', async(req, res) => {
+    try{
+        res.render('newBlog');
 
+    } catch(err){
+        res.status(500).json({message: 'Cannot get new blog page'});
+    }
+});
 
 
 

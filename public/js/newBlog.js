@@ -3,9 +3,8 @@ const newBlog = async(event) => {
     const post_title = document.querySelector('#blogTitle').value.trim();
     const post_content = document.querySelector('#blogContent').value.trim();
 
-    //Fetch route for the blog:
     if(post_title && post_content){
-        const response = await fetch('/', {
+        const response = await fetch('/api/posts', {
             method: 'POST',
             body: JSON.stringify({post_title, post_content}),
             headers: {
@@ -16,7 +15,7 @@ const newBlog = async(event) => {
             document.location.replace('/dashboard');
             console.log('Created the blog');
         } else {
-            alert('Not ablog to create the blog post');
+            alert('Not able to create the blog post');
         }
 
     } else {

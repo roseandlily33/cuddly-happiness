@@ -36,11 +36,14 @@ router.get('/signup', async (req, res) => {
     }
 });
 
+//include: [{model: User}]
 // Needs withAuth
 router.get('/dashboard', async (req, res) => {
     try{
-        const postData = await Post.findAll({
-            include: ({model: User})
+        const postData = await Post.findOne({
+            where: {
+                user_id: req.session.user_id
+            }, include: [{model: User}]
         });
         const post = postData.map(post => post.get({plain: true}));
         res.render('dashboard', {
@@ -76,7 +79,6 @@ router.get('/onepost/:id', async(req, res) => {
 router.get('/newBlog', withAuth, async(req, res) => {
     try{
         res.render('newBlog');
-
     } catch(err){
         res.status(500).json({message: 'Cannot get new blog page'});
     }

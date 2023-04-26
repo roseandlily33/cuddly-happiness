@@ -1,13 +1,17 @@
 <section>
-    <h1>Edit Page</h1>
+    <h1>Edit you blog!</h1>
     <div>
-        <textarea></textarea>
+        <form class="editBlogForm">
+            <label for="post_title">Title:</label>
+            <input type="texbox" id="post_title" name="post_title" value="{{post.post_title}}">
+            <label for="post_content">Post Content:</label>
+            <input type="textbox" id="post_content" name="post_content" value="{{post.post_content}}">
+        </form>
     </div>
-
-
-
-
-
-     <button class="deleteBtn">Delete</button>
+    <div>
+          <button class="deleteBtn">Delete</button>
+          <button class="submitUpdate">Update</button>
+    </div>
 </section>
 <script src="/js/delete.js"></script>
+<script src="/js/editBlog.js"></script>

@@ -86,6 +86,18 @@ router.get('/newBlog', async(req, res) => {
     }
 });
 
+router.get('/edit/:id', async(req, res) => {
+    try{
+        const postData = await Post.findByPk(req.params.id, {
+            include: [{model: Comment}, {model: User}]
+        });
+        const post = postData.get({plain: true});
+        res.render('editpage', {post,
+        loggedIn: req.session.loggedIn});
+    } catch(err){
+        res.status(500).json({message: 'Cannot get the edit page'})
+    }
+});
 
 
 module.exports = router;

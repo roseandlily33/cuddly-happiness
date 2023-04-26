@@ -15,8 +15,5 @@ const deletePost = async(event) => {
     } else {
         alert('Not able to delete the blog');
     }
-    
-
 }
 document.querySelector('.deleteBtn').addEventListener('click', deletePost);
-//document.getElementById('').defaultValue = '';

@@ -18,17 +18,18 @@ router.get('/', async(req, res) => {
     }
 });
 //Get's login page: 
-router.get('/login', async (req, res) => {
+router.get('/login', (req, res) => {
     try{
         if(req.session.loggedIn){
             res.render('homepage');
+            return;
         }
         res.render('login');
     } catch(err){
         res.status(500).json({message: 'Login page is not available'});
     }
 });
-//Sign up: - Finished
+//Sign up: 
 router.get('/signup', async (req, res) => {
     try{
         res.render('signup');

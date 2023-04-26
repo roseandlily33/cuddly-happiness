@@ -9,6 +9,7 @@ router.post('/', async (req, res) => {
             password: req.body.password,
         });
         req.session.save(() => {
+            req.session.user_id = dbUser;
             req.session.loggedIn = true;
             res.status(200).json(dbUser);
         });
@@ -33,8 +34,9 @@ router.post('/login', async (req, res) => {
             return;
         }
         req.session.save(() => {
-           req.session.loggedIn = true;
-           res.status(200).json({message: 'Logged IN!!'})
+        req.session.user_id = userData;
+        req.session.loggedIn = true;
+        res.status(200).json({message: 'Logged IN!!'})
         });
     } catch(err){
         res.status(500).json({message: 'Couldnt login'});
@@ -65,7 +67,16 @@ router.delete('dashboard/:id', async(req, res) => {
     }
 });
 
-
+router.post('/logout', (req, res) => {
+    if (req.session.loggedIn) {
+      req.session.destroy(() => {
+        res.status(204).end();
+      });
+    } else {
+      res.status(404).end();
+    }
+  });
+  
 
 
 module.exports = router;

@@ -15,7 +15,7 @@ router.get('/', async(req, res) => {
         res.status(500).json({message: 'No homepage available'});
     }
 });
-//Get's login page: 
+
 router.get('/login', (req, res) => {
     try{
         if(req.session.loggedIn){
@@ -27,7 +27,7 @@ router.get('/login', (req, res) => {
         res.status(500).json({message: 'Login page is not available'});
     }
 });
-//Sign up: 
+
 router.get('/signup', async (req, res) => {
     try{
         res.render('signup');
@@ -36,14 +36,10 @@ router.get('/signup', async (req, res) => {
     }
 });
 
-//include: [{model: User}]
-// Needs withAuth
-router.get('/dashboard/:id', async (req, res) => {
+router.get('/dashboard', async (req, res) => {
     try{
-     //   const postData = await Post.findAll({
-      //      include: [{model: User}]
-     //   })
-        const postData = await Post.findByPk({
+  
+        const postData = await Post.findAll({
             where: {
                id: req.session.user_id
             }, 
@@ -64,7 +60,6 @@ router.get('/onepost/:id', async(req, res) => {
     try{
         const postData = await Post.findByPk(req.params.id, {
             include: [{model: User}, {model: Comment}]
-               // include: [User, { model: Comment, include: [User]}],
             });
             if(!postData){
                 res.status(404).json('Cannot find the post');

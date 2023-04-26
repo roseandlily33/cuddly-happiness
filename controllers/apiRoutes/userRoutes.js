@@ -1,7 +1,6 @@
 const router = require('express').Router();
-const {User, Post, Comment} = require('../../models');
+const {User, Post } = require('../../models');
 
-//Creates a new user: - Finished
 router.post('/', async (req, res) => {
     try{
         const dbUser = await User.create({
@@ -18,7 +17,6 @@ router.post('/', async (req, res) => {
     }
 });
 
-// Post on login page:
 router.post('/login', async (req, res) => {
     try{
         const userData = await User.findOne({ where: {
@@ -53,7 +51,7 @@ router.post('/logout', (req, res) => {
         res.status(404).end();
     }
 });
-//Delete a blog post:
+
 router.delete('dashboard/:id', async(req, res) => {
     try{
         const delPost = await Post.destroy({

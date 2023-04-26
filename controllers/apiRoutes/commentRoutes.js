@@ -1,7 +1,6 @@
 const router = require('express').Router();
-const {User, Post, Comment} = require('../../models');
+const {Comment} = require('../../models');
 
-// Post to comments:
 router.post('/', async(req, res) => {
     try{
        const newComment = await
@@ -16,8 +15,5 @@ router.post('/', async(req, res) => {
         res.status(500).json({message: 'No comments found'});
     }
 });
-
-
-
 
 module.exports = router;

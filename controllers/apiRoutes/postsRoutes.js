@@ -1,8 +1,7 @@
 const router = require('express').Router();
-const {User, Post, Comment} = require('../../models');
+const {Post} = require('../../models');
 const withAuth = require('../../utils/withAuth');
 
-//Creates a new blog:
 router.post('/', withAuth, async (req,res) => {
     try{
         const newPost = await Post.create({
@@ -15,7 +14,7 @@ router.post('/', withAuth, async (req,res) => {
         res.status(500).json({message: 'Cannot add the new blog post'});
     }
 });
-//Put to update the blog
+
 router.put('/:id',withAuth, async(req, res) => {
     try{
         const updatedBlog = await Post.update({

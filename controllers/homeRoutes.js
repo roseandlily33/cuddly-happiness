@@ -2,8 +2,6 @@ const router = require('express').Router();
 const { User, Post, Comment} = require('../models');
 const withAuth = require('../utils/withAuth');
 
-//Get all the posts for homepage: 
-// Still need to get the user who created the post
 router.get('/', async(req, res) => {
     try{
         const postData = await Post.findAll({
@@ -54,8 +52,6 @@ router.get('/dashboard', async (req, res) => {
         res.status(500).json({message: 'Dashboard is not found'});
     }
 });
-
-
 
 router.get('/onepost/:id', async(req, res) => {
     try{

@@ -13,7 +13,7 @@ const editBlog = async(event) => {
         }
     });
     if(response.ok){
-        document.location.reload();
+        document.location.reload('');
     } else {
         alert('Could not update the blog');
     }

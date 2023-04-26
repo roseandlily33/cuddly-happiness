@@ -223,12 +223,11 @@ form input{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    border: 1px solid var(--lightPink);
-    padding: 0.5em;
+    border: 2px solid var(--lightPink);
+    padding: 0.8em;
     margin: 1em;
-    border-radius: 25px;
+    border-radius: 25px; 
 }
-
 .commentForm{
     background-color: var(--lightPink);
     margin: 4em;
@@ -262,4 +261,30 @@ form input{
 .blogForm input{
     width: 60%;
    
+}
+/* Edit Page */
+#editDiv{
+    display: flex;
+    flex-direction: column;
+    margin-block: 2em;
+    margin-inline: 7em;
+    text-align: center;
+    
+}
+#editDiv h1{
+    font-family: var(--heading);
+    color: var(--hotPink);
+    font-size: 2em;
+}
+#editDiv label{
+    font-size: 1.2em;
+    text-align: left;
+    color: var(--brown);
+}
+#buttonDiv{
+    padding: 2em;
+}
+button:hover{
+    background-color: var(--brown);
+    color: var(--lightPink);
 }

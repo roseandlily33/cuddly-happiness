@@ -18,10 +18,13 @@ https://whispering-bastion-54456.herokuapp.com/
 I learned how to use handlebars.js which I really enjoyed, and routing systems. With sequelize I learned a lot about how the dates work, how you can used .createdAt, and not have to make dates on your own. I learned that when using bcrypt and seeding data you cannot login apparently because of the encryption. I also learned how to put the backend and the frontend together which took a minute, and the whole thing was such a big project I've spent so many hours on it and I am so happy with how it looks and how it turned out. 
 
 ## Difficulties:
-The most difficult thing about this project was the routing system, but I think that I got a better understanding for it.
+The most difficult thing about this project was the routing system, but I think that I got a better understanding for it. 
 
 ## Successes:
 There was a lot of successes I was able to create and do the handlebars, create the theme, and do most of the javascript, set up sequelize even though I got about 10 errors in the process and the sequelize modals. 
+
+## Future Development:
+Due to a lack of time I also would have liked to have more time on this project, even for touch ups on simple things like making some of the textboxes, smaller, filtering down on returning data with atrributes, but there was some things on the project that gave me hours of trouble and I never had time for some of these touch up tasks.
 
 ## Design Process
 The design process started off being a blue theme (even though it was supposed to be a tech blog, that just went right over my head), and I wanted to do something with desserts, I had picked a name, decided to go with a different name - Shortcake Blogs and then that turned it into a different colours scheme of a strawberry shortcake, and I came up with a cake design to show each blog on the main page, and to have everything dessert themed. 
